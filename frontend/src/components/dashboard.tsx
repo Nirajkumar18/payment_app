@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, } from "react-router-dom"
 import axios from "axios";
+import Modal from "./modal";
 
 type usersList = {
     _id :string,
@@ -12,13 +13,29 @@ type usersList = {
 const Dashboard = () => {
 
    const location = useLocation();
-  
+   
    const {data} = location.state;
+   
    console.log(data);
    const [users, setUsers] = useState<usersList[]>([])
    const [bal, setBalance] = useState(0);
-   console.log('users', users);
+   const [open, setOpen] = useState(false); 
+   const [receiverData, setReceiverData] = useState({});
 
+   console.log('users', users);
+   const handleSubmit = ()=>{
+      
+      setOpen(false);
+      
+   }
+
+   const submitHandler = (val: usersList)=>{
+     
+     
+      setOpen(true);
+      setReceiverData(val);
+      console.log('submitHandler');
+   }
    const getAccountDetails = async ()=>{
          
         try{
@@ -62,7 +79,7 @@ const Dashboard = () => {
       getAllUsers();
       getAccountDetails();
         
-   }, [])
+   }, [open])
   
 
    
@@ -93,13 +110,14 @@ const Dashboard = () => {
               <div className="flex justify-between mt-5" key={value._id}>
             
               <h1 className="text-md font-bold">{value.firstName}</h1>
-              <button className="bg-black text-white px-2 rounded-md text-sm">Send Money</button>
+              <button className="bg-black text-white px-2 rounded-md text-sm" onClick={()=>submitHandler(value)}>Send Money</button>
            </div>
             )
           })
         
           } 
          
+          <Modal visible={open} onClose={handleSubmit} receiverData={receiverData}/> 
 
     </div>
 

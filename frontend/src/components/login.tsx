@@ -1,10 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import axios from 'axios';
 
-type userLogin = {
-  email : string,
-  password: string
-}
 const Login = () => {
 
 
