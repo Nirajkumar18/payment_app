@@ -101,6 +101,21 @@ const sign_in_controller = async (req,res)=>{
 
 }
 
+const get_All_Users = async (req, res)=>{
+    
+     try{
+      const users = await User.find();
+      //console.log(users);
+      return res.status(200).json(
+          users
+      )
+     }catch(error){
+      console.log(error);
+      return res.send(error);
+     }
 
 
-module.exports = {sign_up_controller, sign_in_controller}
+}
+
+
+module.exports = {sign_up_controller, sign_in_controller, get_All_Users}
