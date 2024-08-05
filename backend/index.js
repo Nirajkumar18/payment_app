@@ -13,6 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1", rootRouter);
 
-app.listen(8000, ()=>{
+app.listen(8001, ()=>{
     console.log('Server Listening at port 8000');
 })
