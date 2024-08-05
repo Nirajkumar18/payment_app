@@ -35,10 +35,9 @@ jobs:
       - name: Deploy to EC2
         run: |
           scp -o StrictHostKeyChecking=no -r ./frontend/dist/* ubuntu@3.84.32.45:/var/www/html/
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-        with:
-          ssh-agent: ${{ secrets.EC2_SSH_KEY }}
-          host: YOUR_EC2_IP
-          username: ec2-user
-          key: ${{ secrets.EC2_SSH_KEY }}
+        env: 
+           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+           ssh-agent: ${{ secrets.EC2_SSH_KEY }}
+           host: YOUR_EC2_IP
+           username: ec2-user
+           key: ${{ secrets.EC2_SSH_KEY }}
