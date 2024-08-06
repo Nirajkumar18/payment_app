@@ -31,8 +31,8 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/scp-action@v0.1.1
         with:
-          host: 3.83.80.229
-          username: ubuntu
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22          
           source: "frontend/dist/*"
