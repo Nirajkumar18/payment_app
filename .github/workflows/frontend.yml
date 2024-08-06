@@ -29,9 +29,10 @@ jobs:
         working-directory: ./frontend
 
       - name: Deploy to EC2
-        env: 
-           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-           host: 3.84.32.45
-           username: ${{ secrets.EC2_USER }}
-        run: |
-          scp -o StrictHostKeyChecking=no -r ./frontend/dist/* ubuntu@3.84.32.45:/var/www/html/
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "frontend/dist/*"
+          target: "/var/www/html/"
