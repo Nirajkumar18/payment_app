@@ -34,5 +34,6 @@ jobs:
           host: 3.83.80.229
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22          
           source: "frontend/dist/*"
           target: "/var/www/html/"
