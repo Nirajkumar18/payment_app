@@ -40,6 +40,6 @@ jobs:
 
       - name: Copy files via SCP
         run: |
-          scp -o StrictHostKeyChecking=no -i my-ssh-key.pem -r ./frontend/dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html
+          scp -o StrictHostKeyChecking=no -i my-ssh-key.pem -r ./frontend/dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html/frontend-app
 
 
