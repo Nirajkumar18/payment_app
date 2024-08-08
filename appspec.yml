@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
+  - source: /frontend/*
     destination: /var/www/html/app
     overwrite: true
 file_exists_behavior: OVERWRITE
